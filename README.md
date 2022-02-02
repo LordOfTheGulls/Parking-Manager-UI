@@ -1,2 +1,2 @@
 # Parking-Manager-WEB
-Web Based Parking Manager
+Web Based Parking Manager (Angular)
