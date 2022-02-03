@@ -18,6 +18,16 @@
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
+    "paths": {
+      "@core/*":     ["app/*"],
+      "@utils/*":    ["app/utils/*"],
+      "@enums/*":    ["app/enums/*"],
+      "@models/*":   ["app/models/*"],
+      "@services/*": ["app/services/*"],
+      "@modules/*":  ["app/modules/*"],
+      "@shared/*":   ["app/shared/*"],
+      "@scss/*":     ["app/scss/*"],
+    },
     "lib": [
       "es2020",
       "dom"

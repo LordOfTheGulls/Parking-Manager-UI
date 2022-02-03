@@ -11,6 +11,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~13.2.0",
+    "@angular/cdk": "^13.2.1",
     "@angular/common": "~13.2.0",
     "@angular/compiler": "~13.2.0",
     "@angular/core": "~13.2.0",
@@ -24,6 +25,8 @@
     "@ngrx/store": "^13.0.2",
     "ag-grid-angular": "^26.2.0",
     "ag-grid-community": "^26.2.1",
+    "angular-oauth2-oidc": "^13.0.1",
+    "angular-oauth2-oidc-jwks": "^13.0.1",
     "axios": "^0.25.0",
     "exceljs": "^4.3.0",
     "lodash": "^4.17.21",
