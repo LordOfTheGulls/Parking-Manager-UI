@@ -5,17 +5,17 @@ import { RouterModule } from "@angular/router";
 import { EnsureModuleLoadedOnce } from "./guards/ensureModuleLoadedOnce.guard";
 
 @NgModule({
+    declarations: [],
     imports: [
         CommonModule,
         RouterModule,
         HttpClientModule,
     ],
     exports: [],
-    declarations: [],
     providers: [],
 })
 export class CoreModule extends EnsureModuleLoadedOnce {
-    constructor(parentModule: CoreModule){
-        super(parentModule, 'CoreModule')
-    }
+    // constructor(parentModule: CoreModule){
+    //     super(parentModule, 'CoreModule')
+    // }
 }
