@@ -1,0 +1,23 @@
+@use './variables';
+
+@use 'sass:map';
+
+@function get-active-themes(){
+    @return variables.$registered-themes;
+}
+
+@function get-active-theme-name(){
+    @if (variables.$active-theme-name != null) {
+        @return variables.$active-theme-name;
+    }
+}
+
+@function register-theme($theme-name, $theme){
+    @return map.set(get-active-themes(), $theme-name, $theme);
+}
+
+@function theme($theme, $theme-property){
+   //$active-themes: get-active-themes();
+   // $active-theme-name: get-active-theme-name();
+   @return map-get($theme, $theme-property);
+}

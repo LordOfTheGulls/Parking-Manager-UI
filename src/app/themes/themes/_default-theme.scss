@@ -1,0 +1,9 @@
+@use '../theming/functions';
+@use '../theming/variables';
+
+$theme: (
+    background-color:         red,
+    header-background-color:  red,
+    sidebar-background-color: blue,
+);
+variables.$registered-themes: functions.register-theme(default, $theme);

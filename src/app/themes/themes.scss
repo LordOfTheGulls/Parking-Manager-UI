@@ -1,0 +1,7 @@
+@use './components/components';
+
+@use './themes/default-theme';
+@use './themes/dark-theme';
+
+
+@include components.install-component-themes();

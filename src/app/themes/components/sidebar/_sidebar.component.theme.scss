@@ -1,0 +1,10 @@
+@use '../../theming/functions';
+@use '../../theming/mixins';
+
+@mixin install-sidebar-theme(){
+    app-sidebar{
+        @include mixins.install-theme() using ($theme){
+            background-color: functions.theme($theme, sidebar-background-color);
+        }
+    }
+}
