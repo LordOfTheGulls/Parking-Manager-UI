@@ -6,7 +6,7 @@
   $themes: functions.get-active-themes();
   @each $theme, $map in $themes {
     $theme-map: map-get($themes, $theme) !global;
-    .theme--#{$theme} & {
+    .theme-#{$theme} & {
       @content($theme-map);
     }
   }
