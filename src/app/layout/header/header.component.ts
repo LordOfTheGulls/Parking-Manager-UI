@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { map, shareReplay, timer } from 'rxjs';
 import { DateTime } from 'luxon';
+import { environmentBase } from 'src/environments/environment.base';
 
 @Component({
   selector: 'app-header',
@@ -17,10 +18,13 @@ export class AppHeaderComponent implements OnInit {
 
   public showDate: boolean = true;
 
+  public softwareVersion: string = "";
+
   constructor(
     private cdRef: ChangeDetectorRef
   ) { 
-
+    
+    this.softwareVersion = environmentBase.app.version;
   }
 
   ngOnInit(): void {

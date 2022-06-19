@@ -1,4 +1,5 @@
 /*** Angular Material ***/
+import { NgModule } from '@angular/core';
 import { MatSliderModule}  from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -22,6 +23,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 /*** PrimeNg ***/
 import { AccordionModule } from 'primeng/accordion';
@@ -58,9 +61,7 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
 import { TabMenuModule } from 'primeng/tabmenu';
-import { NgModule } from '@angular/core';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatGridListModule } from '@angular/material/grid-list';
+import { ChartModule } from 'primeng/chart';
 
 const MaterialModules =  [
     /*Angular Material*/
@@ -125,7 +126,8 @@ const MaterialModules =  [
     VirtualScrollerModule,
     TabMenuModule,
     MatDividerModule,
-    ButtonModule
+    ButtonModule,
+    ChartModule
     /****************/
 ];
 

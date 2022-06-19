@@ -1,22 +1,22 @@
 import { NgModule } from "@angular/core";
 
 import { SharedModule } from "src/app/shared/shared.module";
-import { ReportsRoutingModule } from "./reports-routing.module";
+import { SettingsRoutingModule } from "./settings-routing.module";
 
-import { ReportsComponent } from "./reports.component";
+import { SettingsComponent } from "./settings.component";
 
 @NgModule({
     declarations: [
-        ReportsComponent
+        SettingsComponent
     ],
     imports: [
-        ReportsRoutingModule,
+        SettingsRoutingModule,
         SharedModule
     ],
     exports: [
 
     ]
 })
-export class ReportsModule {
+export class SettingsModule {
 
 }

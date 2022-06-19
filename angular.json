@@ -117,5 +117,7 @@
       }
     }
   },
-  "defaultProject": "pm-web"
+  "cli": {
+    "analytics": false
+  }
 }

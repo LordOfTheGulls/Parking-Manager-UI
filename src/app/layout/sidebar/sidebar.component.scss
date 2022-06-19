@@ -1,3 +1,17 @@
 div.sidebar-wrapper{
- 
+    display: flex;
+    justify-content: center;
+    
+    button#help-btn{
+        margin-top: 16px;
+        border: 0.2em solid white;
+        box-sizing: content-box;
+    }
+
+    div.sidebar-menu-wrapper{
+        button{
+            width: 100%;
+            padding: 0.8em;
+        }
+    }
 }

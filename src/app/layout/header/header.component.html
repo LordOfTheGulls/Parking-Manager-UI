@@ -2,12 +2,17 @@
 
     <div class="header-container">
 
-        <span class="logo-wrapper">
+        <div class="logo-wrapper">
             <mat-icon svgIcon="pm-logo" id="logo"></mat-icon>
-        </span>
+        </div>
     
-        <div class="time-wrapper">
-    
+
+        <div class="info-wrapper">
+
+            <mat-card id="version-info-wrapper">
+                <label id="software-version">Version: {{softwareVersion}}</label>
+            </mat-card>
+
             <mat-card id="time-info-wrapper">
                <mat-icon id="clock-icon">access_time</mat-icon>
                <span>{{( showDate === true ? currentDateTime : currentTime )}}</span>

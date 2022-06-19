@@ -1,3 +1,39 @@
 <div class="sidebar-wrapper">
     
+    <button mat-mini-fab color="primary" id="help-btn" matTooltip="Help" matTooltipPosition="right"  (click)="help()">
+        <mat-icon>help_outline</mat-icon>
+    </button>
+
+    <div class="sidebar-menu-wrapper">
+
+        <button mat-raised-button color="primary" matTooltip="Parking Dashboard" matTooltipPosition="right" (click)="dashboard()">
+            <mat-icon>dashboard</mat-icon>
+        </button>
+    
+        <mat-divider></mat-divider>
+        
+        <button mat-raised-button color="primary" matTooltip="Parking Management" matTooltipPosition="right" (click)="parkingManagement()">
+            <mat-icon>store</mat-icon>
+        </button>
+    
+        <mat-divider></mat-divider>
+        
+        <button mat-raised-button color="primary" matTooltip="Reports" matTooltipPosition="right" (click)="reportManagement()">
+            <mat-icon>assignment</mat-icon>
+        </button>
+    
+        <mat-divider></mat-divider>
+        
+        <button mat-raised-button color="primary" matTooltip="User Management" matTooltipPosition="right" (click)="userManagement()">
+            <mat-icon>people</mat-icon>
+        </button>
+    
+        <mat-divider></mat-divider>
+        
+        <button mat-raised-button color="primary" matTooltip="Settings" matTooltipPosition="right" (click)="settings()">
+            <mat-icon>settings</mat-icon>
+        </button>
+
+    </div>
+    
 </div>

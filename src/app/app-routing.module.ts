@@ -9,16 +9,27 @@ import { AuthCallbackComponent } from './auth-callback.component';
 const routes: Routes = [
   {
     path: '',
+    //canActivate: [AuthGuard],
     redirectTo: 'dashboard',
     pathMatch: 'full',
   },
   {
-    //canActivate: [AuthGuard],
     path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then(module => module.DashboardModule),
   },
   {
-    path: 'auth-callback',
-    component: AuthCallbackComponent,
+    path: 'parking', loadChildren: () => import('./modules/parking/parking.module').then(module => module.ParkingModule),
+  },
+  {
+    path: 'reports', loadChildren: () => import('./modules/reports/reports.module').then(module => module.ReportsModule),
+  },
+  {
+    path: 'users', loadChildren: () => import('./modules/users/users.module').then(module => module.UsersModule),
+  },
+  {
+    path: 'settings', loadChildren: () => import('./modules/settings/settings.module').then(module => module.SettingsModule),
+  },
+  {
+    path: 'auth-callback', component: AuthCallbackComponent,
   },
 ];
 

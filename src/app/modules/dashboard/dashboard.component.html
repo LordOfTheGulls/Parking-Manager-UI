@@ -2,34 +2,131 @@
 
     <div class="dashboard-options-row">
 
+        <mat-card>
+
+            <mat-card-title>
+
+                <div id="system-status-wrapper">
+                    <ng-container 
+                        [ngTemplateOutlet]="statusIcon"
+                        [ngTemplateOutletContext]="{ status: parkSystemStatus, text: 'System Status: ' }">
+                    </ng-container>
+                    {{ParkSystemStatus[parkSystemStatus]}}
+                </div>
+
+                <mat-divider vertical="true">|</mat-divider>
+
+                <div id="system-uptime-wrapper">
+                    <b>System Uptime: </b>
+                    <mat-icon>timelapse</mat-icon>
+                    <span>{{parkSystemUptime}}</span>
+                 </div>
+
+                <mat-divider vertical="true">|</mat-divider>
+
+                <div id="lot-status-wrapper">
+                    <ng-container 
+                        [ngTemplateOutlet]="statusIcon"
+                        [ngTemplateOutletContext]="{ status: parkLotStatus, text: 'Parking Status:  ' }">
+                    </ng-container>
+                    {{ParkLotStatus[parkLotStatus]}}
+                </div>
+
+                <mat-divider vertical="true">|</mat-divider>
+            
+            </mat-card-title>
+
+        </mat-card>
+
+        <ng-template #statusIcon let-status="status" let-text="text">
+            <b>{{text}}</b>
+            <ng-container [ngSwitch]="status">
+                <mat-icon *ngSwitchCase="1" style="color:#63ff63;" matTooltip="Good">lens</mat-icon>
+                <mat-icon *ngSwitchCase="2" color="warn" matTooltip="Good">lens</mat-icon>
+                <mat-icon *ngSwitchDefault  color="warn" matTooltip="There was an Error ">error</mat-icon>
+            </ng-container>
+        </ng-template>
+
     </div>
 
     <div class="dashboard-visual-row">
 
-
         <div class="dashboard-col-1">
 
-            <mat-card>
+            <mat-card id="occupancy-card">
+
+                <mat-icon class="card-icon">local_parking</mat-icon>
 
                 <mat-card-title>
-                    Test
+
+                    Slot Occupancy
+
+                    <mat-icon class="info-icon" matTooltip="Total Parking Slots Occupied." matTooltipPosition="right">info</mat-icon>
+
                 </mat-card-title>
                 
+                <mat-card-subtitle>
+                    <i>Stat for:</i><b> Today</b>
+                </mat-card-subtitle>
+
                 <mat-card-content>
-        
+
+                    <ng-container *ngTemplateOutlet="occupancyMode1Content"></ng-container>
+
+                    <ng-template #occupancyMode1Content>
+
+                        <span>{{dashboard.occupancy.free}} / {{dashboard.occupancy.total}}</span>
+
+                    </ng-template>
+
+                    <ng-template #occupancyMode2Content>
+
+                        <span>{{dashboard.occupancy.perc}} %</span>
+
+                    </ng-template>
+
                 </mat-card-content>
         
+                <mat-card-footer>
+                   
+                </mat-card-footer>
+                
             </mat-card>
         
-            <mat-card>
+            <mat-card id="traffic-card" matSpinner="true">
     
+                <mat-icon class="card-icon">directions_car</mat-icon>
+
                 <mat-card-title>
-                    Test 1 
+                    
+                    Lot Traffic (In)
+
+                    <mat-icon class="info-icon" matTooltip="Total Vehicles Entered." matTooltipPosition="right">info</mat-icon>
+
                 </mat-card-title>
+                
+                <mat-card-subtitle>
+                    <i>Stat for:</i><b> Today</b>
+                </mat-card-subtitle>
                 
                 <mat-card-content>
         
+                    <ng-container *ngTemplateOutlet="trafficMode1Content"></ng-container>
+
+                    <ng-template #trafficMode1Content>
+                        <span>22</span>
+                    </ng-template>
+
+                    <ng-template #trafficMode2Content>
+
+
+                    </ng-template>
+
                 </mat-card-content>
+
+                <mat-card-footer>
+                   
+                </mat-card-footer>
         
             </mat-card>
 
@@ -37,27 +134,57 @@
         
         <div class="dashboard-col-2">
 
-            <mat-card>
+            <mat-card id="stay-card">
+
+                <mat-icon class="card-icon">access_time</mat-icon>
 
                 <mat-card-title>
-                    Test 2
+
+                    Stay Time (Avg)
+
+                    <mat-icon class="info-icon" matTooltip="Average Vehicle Stay." matTooltipPosition="right">info</mat-icon>
+
                 </mat-card-title>
-                
+
+                <mat-card-subtitle>
+                    <i>Stat for:</i><b> Today</b>
+                </mat-card-subtitle>
+
                 <mat-card-content>
-        
+                    
+                    22 hours
+
                 </mat-card-content>
+
+                <mat-card-footer>
+                   
+                </mat-card-footer>
         
             </mat-card>
     
-            <mat-card>
+            <mat-card id="profit-card">
     
-                <mat-card-title>
-                    Test 3
+                <mat-icon class="card-icon">attach_money</mat-icon>
+
+               <mat-card-title>
+
+                    Profit
+
+                    <mat-icon class="info-icon" matTooltip="Total Profit Made." matTooltipPosition="right">info</mat-icon>
+
                 </mat-card-title>
                 
+                <mat-card-subtitle>
+                    <i>Stat for:</i><b> Today</b>
+                </mat-card-subtitle>
+
                 <mat-card-content>
-        
+                    123.53
                 </mat-card-content>
+
+                <mat-card-footer>
+                   
+                </mat-card-footer>
         
             </mat-card>
 

@@ -4,16 +4,25 @@
 
 @mixin install-sidebar-theme(){
     app-sidebar{
-        width: 40px;
+        width: 62px;
         height: 100%;
         z-index: 999;
+        background-color: #0063de0d;
 
         @include mixins.install-theme() using ($theme){
             .sidebar-wrapper{
                 width: inherit;
-                height: 320px;
-                border-radius: 0 2em 1em 0;
+            }
+            
+            .sidebar-menu-wrapper{
+                width: inherit;
+                height: auto;
+                border-radius: 0 1.2em 1em 0;
+                border: 0.2em solid white;
+                border-left: 0.1em;
+                box-sizing: border-box;
                 position: absolute;
+                overflow: hidden;
                 top: calc(variables.$header-height + variables.$sidebar-gap);
                 background-color: functions.theme($theme, sidebar-background-color);
             }

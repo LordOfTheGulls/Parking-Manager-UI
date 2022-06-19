@@ -10,8 +10,8 @@ $theme: (
     header-border-color:     #dadada,
 
     footer-background-color:  white,
-
-    sidebar-background-color: white,
+    
+    sidebar-background-color: #5b9ef1,
     sidebar-gap:              40px,
 );
 variables.$registered-themes: functions.register-theme(default, $theme);

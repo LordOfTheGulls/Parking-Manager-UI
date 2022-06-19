@@ -9,7 +9,7 @@
         width: 100%;
         height: 100%;
 
-        span.logo-wrapper{
+        div.logo-wrapper{
             display: flex;
             width: 120px;
             height: 100%;
@@ -22,14 +22,20 @@
                 height: 100%;
             }
         }
-        
-        div.time-wrapper{
+
+        div.info-wrapper{
             display: flex;
             align-items: flex-start;
             justify-content: center;
             flex: 1;
 
-            #time-info-wrapper{
+            label#software-version{
+                font-size: 12pt;
+                color: white;
+            }
+
+            #time-info-wrapper,
+            #version-info-wrapper{
                 display: flex;
                 align-items: center;
                 color: white;
@@ -38,7 +44,11 @@
                 font-size: 10pt;
                 font-weight: bold;
                 height: 20px;
+            }
 
+            #time-info-wrapper{
+                margin-left: 1em;
+                
                 span{
                     margin: 0 4px;
                 }
