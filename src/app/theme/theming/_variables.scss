@@ -1,4 +1,13 @@
 /*** This map will contain all registered themes.***/
 $registered-themes: (); 
+
 /*** This property will hold active theme name. ***/
 $active-theme-name: default;
+
+$header-height: 64px;
+$sidebar-gap: 80px;
+
+$max-layout-width: 1920px;
+$max-layout-height: 1080px;
+$min-layout-width: 900px;
+$min-layout-height: 1080px;

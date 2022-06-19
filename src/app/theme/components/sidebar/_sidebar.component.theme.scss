@@ -1,10 +1,22 @@
 @use '../../theming/functions';
 @use '../../theming/mixins';
+@use '../../theming/variables';
 
 @mixin install-sidebar-theme(){
     app-sidebar{
+        width: 40px;
+        height: 100%;
+        z-index: 999;
+
         @include mixins.install-theme() using ($theme){
-            background-color: functions.theme($theme, sidebar-background-color);
+            .sidebar-wrapper{
+                width: inherit;
+                height: 320px;
+                border-radius: 0 2em 1em 0;
+                position: absolute;
+                top: calc(variables.$header-height + variables.$sidebar-gap);
+                background-color: functions.theme($theme, sidebar-background-color);
+            }
         }
     }
 }

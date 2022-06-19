@@ -1,0 +1,114 @@
+.header-wrapper{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+
+    .header-container{
+        display: flex;
+        width: 100%;
+        height: 100%;
+
+        span.logo-wrapper{
+            display: flex;
+            width: 120px;
+            height: 100%;
+            padding: 0em 0.9em 0 1.2em;
+            background-color: white;
+            border-radius: 20px 1px;
+
+            mat-icon#logo{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        
+        div.time-wrapper{
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex: 1;
+
+            #time-info-wrapper{
+                display: flex;
+                align-items: center;
+                color: white;
+                background-color: #7cabe4;
+                padding: 6px;
+                font-size: 10pt;
+                font-weight: bold;
+                height: 20px;
+
+                span{
+                    margin: 0 4px;
+                }
+
+                button#show-date-btn{
+                    line-height: 20px;
+                }
+            }
+        }
+
+        div.util-wrapper{
+            display: flex;
+            align-items: center;
+            height: 100%;
+            margin-left: auto;
+
+            button{
+                height: 100%;
+                border-radius: 0;
+            }
+
+            div.parking-info-wrapper{
+                display: flex;
+                align-items: center;
+                height: 100%;
+            }
+
+            div.events-wrapper{
+                display: flex;
+                align-items: center;
+                height: 100%;
+            }
+
+            div.profile-wrapper{
+                display: flex;
+                align-items: center;
+                height: 100%;
+
+                mat-icon#profile-icon{
+                    margin-right: 0.3em;
+                }
+
+                span#profile-name{
+                    max-width: 240px;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    font-weight: bold;
+                }
+            }
+
+            div.logout-wrapper{
+                display: flex;
+                align-items: center;
+                height: 100%;
+
+                mat-icon#logout-icon{
+
+                }
+
+                span{
+                    margin-left: 0.3em;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    .header-footer{
+        width: 100%;
+        background-color: white;
+    }
+}
+

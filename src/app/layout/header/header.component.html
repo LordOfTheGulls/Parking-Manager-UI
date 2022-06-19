@@ -1,3 +1,69 @@
-<div class="header-container">
+<div class="header-wrapper">
+
+    <div class="header-container">
+
+        <span class="logo-wrapper">
+            <mat-icon svgIcon="pm-logo" id="logo"></mat-icon>
+        </span>
     
+        <div class="time-wrapper">
+    
+            <mat-card id="time-info-wrapper">
+               <mat-icon id="clock-icon">access_time</mat-icon>
+               <span>{{( showDate === true ? currentDateTime : currentTime )}}</span>
+               <button mat-icon-button id="show-date-btn" (click)="onShowDate()">
+                    <mat-icon id="arrow-icon">{{(showDate === true ? 'arrow_left' : 'arrow_right')}}</mat-icon>
+               </button>
+            </mat-card>
+    
+        </div>
+        
+        <div class="util-wrapper">
+     
+    
+            <div class="events-wrapper">
+    
+                <button mat-raised-button color="primary" id="event-btn">
+                    <mat-icon id="logout-icon">report_problem</mat-icon>
+                </button>
+    
+            </div>
+    
+            <div class="parking-info-wrapper">
+    
+                <button mat-raised-button color="primary" id="parking-status-btn">
+                    <mat-icon id="logout-icon">local_parking</mat-icon>
+                </button>
+    
+            </div>
+    
+    
+            <div class="profile-wrapper">
+                
+                <button mat-raised-button color="primary" id="profile-btn" [matMenuTriggerFor]="matMenu">
+                    <mat-icon id="profile-icon">account_circle</mat-icon>
+                    <span id="profile-name">{{profileName}}</span>
+                    <mat-icon id="profile-arrow-icon">arrow_drop_down</mat-icon>
+                </button>
+    
+                <mat-menu #matMenu="matMenu">
+                    
+                </mat-menu>
+    
+            </div>
+            
+            <div class="logout-wrapper">
+    
+                <button mat-raised-button color="primary" id="logout-btn">
+                    <mat-icon id="logout-icon">exit_to_app</mat-icon>
+                    <span>Logout</span>
+                </button>
+    
+            </div>
+        </div>
+    </div>
+    
+    <div class="header-footer">
+    
+    </div>
 </div>

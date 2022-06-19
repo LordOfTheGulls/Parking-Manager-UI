@@ -1,0 +1,21 @@
+@use '../../theming/functions';
+@use '../../theming/mixins';
+@use '../../theming/variables';
+
+@mixin install-header-theme(){
+    app-header{
+        display: flex;
+        width: 100%;
+        box-sizing: border-box;
+        box-shadow: 0px 8px 20px 0px #8f8f8f96;
+     
+        @include mixins.install-theme() using($theme){
+            height:           variables.$header-height;
+            background-color: functions.theme($theme, header-background-color);
+
+            .header-container{
+                border-bottom: 0.25em solid functions.theme($theme, header-border-color);
+            }
+        }
+    }
+}

@@ -1,5 +1,12 @@
-<app-header></app-header>
+<app-header><!--Header Content Inside!--></app-header>
 
-<app-sidebar></app-sidebar>
+<div class="two-column">
+    <app-sidebar><!--Sidebar Content Inside!--></app-sidebar>
 
-<router-outlet></router-outlet>
+    <div class="main-wrapper">
+        <router-outlet><!--App Content Inside--></router-outlet>
+    </div>
+    
+</div>
+
+<app-footer><!--Footer Content Inside!--></app-footer>

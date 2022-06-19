@@ -1,0 +1,12 @@
+@use './layout/layout.component.theme' as layout-theming;
+
+@use './header/header.component.theme' as header-theming;
+@use './footer/footer.component.theme' as footer-theming;
+@use './sidebar/sidebar.component.theme' as sidebar-theming;
+
+@mixin install-component-themes(){
+    @include header-theming.install-header-theme();
+    @include footer-theming.install-footer-theme();
+    @include sidebar-theming.install-sidebar-theme();
+    @include layout-theming.install-layout-theme();
+}

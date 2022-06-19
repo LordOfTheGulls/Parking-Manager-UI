@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 
-import { AuthGuard } from './core/auth/auth.guard';
+import { AuthGuard } from './core/guards/auth.guard';
 import { AuthCallbackComponent } from './auth-callback.component';
 
 const routes: Routes = [
@@ -13,9 +13,8 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    canActivate: [AuthGuard],
-    path: 'dashboard',
-    component: DashboardComponent,
+    //canActivate: [AuthGuard],
+    path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then(module => module.DashboardModule),
   },
   {
     path: 'auth-callback',

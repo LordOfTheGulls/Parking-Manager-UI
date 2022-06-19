@@ -2,8 +2,16 @@
 @use '../theming/variables';
 
 $theme: (
-    background-color:         red,
-    header-background-color:  red,
-    sidebar-background-color: blue,
+    layout-background-color: rgb(228, 228, 228),
+    layout-outline-color:    #3a7cce,
+
+    header-height:           64px,
+    header-background-color: #5b9ef1,
+    header-border-color:     #dadada,
+
+    footer-background-color:  white,
+
+    sidebar-background-color: white,
+    sidebar-gap:              40px,
 );
 variables.$registered-themes: functions.register-theme(default, $theme);

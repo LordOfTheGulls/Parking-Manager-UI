@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { User, UserManager, UserManagerSettings } from 'oidc-client';
 
-import { getClientSettings } from './oidc-config';
+import { getClientSettings } from '../auth/oidc-config';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -11,7 +11,8 @@ export class AuthService {
   private user: User | null = null;
 
   constructor() { 
-    this.manager.getUser().then(user => {
+    this.manager.getUser()
+    .then(user => {
       this.user = user;
     });
   }
@@ -24,7 +25,7 @@ export class AuthService {
     return this.user?.profile;
   }
 
-  public getAuthHeaderValue(): string {
+  public getToken(): string {
     return `${this.user?.token_type} ${this.user?.access_token}`;
   }
 

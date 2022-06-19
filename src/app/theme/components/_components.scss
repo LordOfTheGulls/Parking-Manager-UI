@@ -1,7 +1,0 @@
-@use './sidebar/sidebar.component.theme' as sidebar-theming;
-@use './header/header.component.theme' as header-theming;
-
-@mixin install-component-themes(){
-    @include sidebar-theming.install-sidebar-theme();
-
-}

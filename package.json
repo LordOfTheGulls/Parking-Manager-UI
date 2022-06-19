@@ -1,6 +1,7 @@
 {
   "name": "pm-web",
   "version": "0.0.0",
+  "author": "Aleksandar Vasilev Gospodinov",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -45,6 +46,7 @@
     "@angular/compiler-cli": "~13.2.0",
     "@ngrx/store-devtools": "^13.0.2",
     "@types/jasmine": "~3.10.0",
+    "@types/luxon": "^2.3.2",
     "@types/node": "^12.11.1",
     "jasmine-core": "~4.0.0",
     "karma": "~6.3.0",

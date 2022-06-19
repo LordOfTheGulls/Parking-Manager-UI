@@ -1,7 +1,10 @@
-@use './components/components';
+@use './components';
 
 @use './themes/default-theme';
 @use './themes/dark-theme';
 
-
 @include components.install-component-themes();
+
+body{
+    overflow: hidden;
+}

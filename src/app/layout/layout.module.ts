@@ -8,12 +8,14 @@ import { SharedModule } from "../shared/shared.module";
 import { AppLayoutComponent } from "./layout.component";
 import { AppHeaderComponent } from "./header/header.component";
 import { AppSideBarComponent } from "./sidebar/sidebar.component";
+import { AppFooterComponent } from "./footer/footer.component";
 
 @NgModule({
     declarations: [
-        AppLayoutComponent,
         AppHeaderComponent,
         AppSideBarComponent,
+        AppFooterComponent,
+        AppLayoutComponent,
     ],
     imports: [
         CommonModule,

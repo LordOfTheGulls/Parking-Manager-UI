@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './core/auth/auth.service';
+import { AuthService } from './core/services/auth.service';
 
 @Component({
   selector: 'app-auth-callback',
@@ -12,7 +12,7 @@ export class AuthCallbackComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.completeAuthentication().finally(() => {
-      console.log(this.authService.getAuthHeaderValue());
+      console.log(this.authService.getToken());
     });
   }
 }

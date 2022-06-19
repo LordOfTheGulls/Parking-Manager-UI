@@ -59,6 +59,8 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { NgModule } from '@angular/core';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 const MaterialModules =  [
     /*Angular Material*/
@@ -83,6 +85,8 @@ const MaterialModules =  [
     MatProgressBarModule,
     MatInputModule,
     MatFormFieldModule,
+    MatCardModule,
+    MatGridListModule,
     /****************/
 
     /*** PrimeNg ***/
@@ -119,7 +123,9 @@ const MaterialModules =  [
     ProgressBarModule,
     ProgressSpinnerModule,
     VirtualScrollerModule,
-    TabMenuModule
+    TabMenuModule,
+    MatDividerModule,
+    ButtonModule
     /****************/
 ];
 
