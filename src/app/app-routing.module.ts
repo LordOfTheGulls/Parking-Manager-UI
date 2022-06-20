@@ -14,10 +14,14 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then(module => module.DashboardModule),
+    path: 'dashboard', 
+    data: { animationState: 'One' },
+    loadChildren: () => import('./modules/dashboard/dashboard.module').then(module => module.DashboardModule),
   },
   {
-    path: 'parking', loadChildren: () => import('./modules/parking/parking.module').then(module => module.ParkingModule),
+    path: 'parking', 
+    data: { animationState: 'Two' },
+    loadChildren: () => import('./modules/parking/parking.module').then(module => module.ParkingModule),
   },
   {
     path: 'reports', loadChildren: () => import('./modules/reports/reports.module').then(module => module.ReportsModule),

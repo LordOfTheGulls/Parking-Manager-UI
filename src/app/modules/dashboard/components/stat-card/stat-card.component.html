@@ -1,0 +1,51 @@
+<div class="stat-card-wrapper" (click)="flipCard($event)" [@cardFlip]="cardState">
+
+    <mat-card class="stat-card-front" [ngStyle]="{'background-color': backgroundColor}">
+
+        <mat-icon class="stat-icon">{{statIcon}}</mat-icon>
+
+        <mat-card-title class="stat-header">
+    
+            <ng-content select="[stat=header]"></ng-content>
+    
+            <mat-icon class="stat-info-icon" [matTooltip]="statInfo" matTooltipPosition="right">info</mat-icon>
+    
+        </mat-card-title>
+    
+        <mat-card-subtitle class="stat-subheader">
+    
+            <ng-content select="[stat=subheader]"></ng-content>
+    
+        </mat-card-subtitle>
+    
+        <mat-card-content class="stat-body">
+    
+            <ng-content select="[stat=body]"></ng-content>
+    
+        </mat-card-content>
+    
+        <mat-card-footer class="stat-footer">
+    
+            <ng-content select="[stat=footer]"></ng-content>
+    
+        </mat-card-footer>
+    
+    </mat-card>
+
+    <mat-card class="stat-card-back" [ngStyle]="{'background-color': backgroundColor}">
+
+        <mat-card-title class="stat-header">
+    
+            <ng-content select="[stat=header]"></ng-content>
+    
+            <mat-icon class="stat-info-icon" [matTooltip]="statInfo" matTooltipPosition="right">info</mat-icon>
+    
+        </mat-card-title>
+
+        <mat-card-content>
+            Test
+        </mat-card-content>
+    
+    </mat-card>
+
+</div>

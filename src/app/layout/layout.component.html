@@ -4,7 +4,62 @@
     <app-sidebar><!--Sidebar Content Inside!--></app-sidebar>
 
     <div class="main-wrapper">
-        <router-outlet><!--App Content Inside--></router-outlet>
+
+        <div class="parking-info-row">
+
+            <mat-card>
+    
+                <mat-card-title>
+    
+                    <div id="system-status-wrapper">
+                        <ng-container 
+                            [ngTemplateOutlet]="statusIcon"
+                            [ngTemplateOutletContext]="{ status: parkSystemStatus, text: 'System Status: ' }">
+                        </ng-container>
+                        {{ParkSystemStatus[parkSystemStatus]}}
+                    </div>
+    
+                    <mat-divider vertical="true">|</mat-divider>
+    
+                    <div id="system-uptime-wrapper">
+                        <b>System Uptime: </b>
+                        <mat-icon>timelapse</mat-icon>
+                        <span>{{parkSystemUptime}}</span>
+                     </div>
+    
+                    <mat-divider vertical="true">|</mat-divider>
+    
+                    <div id="lot-status-wrapper">
+                        <ng-container 
+                            [ngTemplateOutlet]="statusIcon"
+                            [ngTemplateOutletContext]="{ status: parkLotStatus, text: 'Parking Status:  ' }">
+                        </ng-container>
+                        {{ParkLotStatus[parkLotStatus]}}
+                    </div>
+    
+                    <mat-divider vertical="true">|</mat-divider>
+                
+                </mat-card-title>
+    
+            </mat-card>
+    
+            <ng-template #statusIcon let-status="status" let-text="text">
+                <b>{{text}}</b>
+                <ng-container [ngSwitch]="status">
+                    <mat-icon *ngSwitchCase="1" style="color:#63ff63;" matTooltip="Good">lens</mat-icon>
+                    <mat-icon *ngSwitchCase="2" color="warn" matTooltip="Good">lens</mat-icon>
+                    <mat-icon *ngSwitchDefault  color="warn" matTooltip="There was an Error ">error</mat-icon>
+                </ng-container>
+            </ng-template>
+    
+        </div>
+
+        <div class="outlet-wrapper" [@triggerName]="prepareRoute(outlet)">
+
+            <router-outlet #outlet="outlet"><!--App Content Inside--></router-outlet>
+            
+        </div>
+
     </div>
     
 </div>
