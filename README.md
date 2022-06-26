@@ -1,2 +1,2 @@
-# Parking-Manager-WEB
-Web Based Parking Manager
+# Parking-Manager-UI
+The UI part of the Parking Manager
