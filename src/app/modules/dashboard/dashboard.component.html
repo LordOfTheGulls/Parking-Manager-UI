@@ -15,7 +15,7 @@
                 <ng-container stat="subheader">
                     
                     <i>Stat for:</i><b> Today</b>
-               
+            
                 </ng-container>
 
                 <ng-container stat="body">
@@ -33,12 +33,12 @@
                         <span>{{dashboard.occupancy.perc}} %</span>
 
                     </ng-template>
-               
+            
                 </ng-container>
 
                 <ng-container stat="footer">
 
-               
+            
                 </ng-container>
 
             </app-stat-card>
@@ -55,18 +55,18 @@
                 <ng-container stat="subheader">
                     
                     <i>Stat for:</i><b> Today</b>
-               
+            
                 </ng-container>
 
                 <ng-container stat="body">
 
                     <span>22</span>
-               
+            
                 </ng-container>
 
                 <ng-container stat="footer">
 
-               
+            
                 </ng-container>
 
             </app-stat-card>
@@ -86,18 +86,18 @@
                 <ng-container stat="subheader">
                     
                     <i>Stat for:</i><b> Today</b>
-               
+            
                 </ng-container>
 
                 <ng-container stat="body">
 
                     <span>22 Hours</span>
-               
+            
                 </ng-container>
 
                 <ng-container stat="footer">
 
-               
+            
                 </ng-container>
 
             </app-stat-card>
@@ -113,18 +113,18 @@
                 <ng-container stat="subheader">
                     
                     <i>Stat for:</i><b> Today</b>
-               
+            
                 </ng-container>
 
                 <ng-container stat="body">
 
                     <span>123.53</span>
-               
+            
                 </ng-container>
 
                 <ng-container stat="footer">
 
-               
+            
                 </ng-container>
 
             </app-stat-card>
@@ -137,11 +137,37 @@
             <mat-card>
         
                 <mat-card-title>
-                    Chart 1 
+
+
                 </mat-card-title>
                 
                 <mat-card-content>
-        
+                    
+                    <ngx-spinner 
+                        [fullScreen]="false" 
+                        type="line-scale" 
+                        bdColor="rgb(75 106 130 / 43%)"
+                        size="large"
+                        color="#5b9ef1"
+                        >
+                    </ngx-spinner>
+
+                    <ag-grid-angular 
+                        id="event-grid"
+                        class="ag-theme-balham"
+                        [gridOptions]="gridOptions" 
+                        [rowData]="eventData"
+                        [overlayNoRowsTemplate]="'No Available Events'"
+                    ></ag-grid-angular>
+
+                    <mat-paginator 
+                        [length]="totalEvents"
+                        [pageIndex]="eventsPaging.page"
+                        [pageSize]="eventsPaging.pageSize"
+                        [pageSizeOptions]="[10, 20, 30, 100]"
+                        (page)="eventPagingChanges($event)">
+                    </mat-paginator>
+
                 </mat-card-content>
         
             </mat-card>

@@ -22,7 +22,7 @@ import { ParkSystemStatus, ParkLotStatus } from '@app/core/enums';
         query(':enter', [style({ left: '-100%', opacity: 0 })]),
         query(':leave', animateChild()),
         group([
-          query(':leave', [animate('1s ease-out', style({ left: '100%', opacity: 0 }))]),
+          query(':leave', [animate('0.2s ease-out', style({ left: '100%', opacity: 0 }))]),
           query(':enter', [animate('1s ease-out', style({ left: '0%', opacity: 1 }))])
         ]),
         query(':enter', animateChild())

@@ -25,6 +25,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 /*** PrimeNg ***/
 import { AccordionModule } from 'primeng/accordion';
@@ -88,6 +89,7 @@ const MaterialModules =  [
     MatFormFieldModule,
     MatCardModule,
     MatGridListModule,
+    MatPaginatorModule,
     /****************/
 
     /*** PrimeNg ***/

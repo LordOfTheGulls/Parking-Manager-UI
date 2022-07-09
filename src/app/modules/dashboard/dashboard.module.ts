@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 
 import { SharedModule } from "src/app/shared/shared.module";
 import { DashboardRoutingModule } from "./dashboard-routing.module";
@@ -6,6 +6,9 @@ import { DashboardRoutingModule } from "./dashboard-routing.module";
 import { DashboardComponent } from "./dashboard.component";
 
 import { StatCardComponent } from "./components/stat-card/stat-card.component";
+import { AgGridModule } from "ag-grid-angular";
+import { NgxSpinnerModule } from "ngx-spinner";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
     declarations: [
@@ -14,11 +17,14 @@ import { StatCardComponent } from "./components/stat-card/stat-card.component";
     ],
     imports: [
         DashboardRoutingModule,
-        SharedModule
+        SharedModule,
+        AgGridModule,
+
     ],
     exports: [
 
-    ]
+    ],
+    schemas:[CUSTOM_ELEMENTS_SCHEMA] 
 })
 export class DashboardModule {
 

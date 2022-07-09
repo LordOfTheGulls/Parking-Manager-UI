@@ -1,0 +1,1 @@
+export { EventDTO } from './evenT';

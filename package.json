@@ -4,7 +4,7 @@
   "author": "Aleksandar Vasilev Gospodinov",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --ssl --ssl-cert ./local.crt --ssl-key local.key",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -34,6 +34,8 @@
     "exceljs": "^4.3.0",
     "lodash": "^4.17.21",
     "luxon": "^2.4.0",
+    "ngx-auto-unsubscribe": "^3.0.1",
+    "ngx-spinner": "^14.0.0",
     "oidc-client": "^1.11.5",
     "primeng": "^13.1.0",
     "rxjs": "~7.5.0",

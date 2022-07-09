@@ -9,7 +9,6 @@ import { AuthCallbackComponent } from './auth-callback.component';
 const routes: Routes = [
   {
     path: '',
-    //canActivate: [AuthGuard],
     redirectTo: 'dashboard',
     pathMatch: 'full',
   },

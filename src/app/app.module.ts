@@ -13,6 +13,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from './core/core.module';
 import { AuthCallbackComponent } from './auth-callback.component';
+import { AuthGuard } from './core/guards/auth.guard';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -29,9 +31,11 @@ import { AuthCallbackComponent } from './auth-callback.component';
     ReactiveFormsModule,
     AppLayoutModule,
     AppRoutingModule,
-    StoreModule.forRoot([])
+    StoreModule.forRoot([]),
   ],
-  providers: [],
+  exports: [
+  ],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

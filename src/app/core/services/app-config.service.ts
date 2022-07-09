@@ -10,7 +10,11 @@ export class AppConfigService {
        this.AppSettings = environment;
     }
 
-    public get ApiBaseURL() {
+    public get ApiBaseURL(): string {
         return this.AppSettings.apiBaseURL;
+    }
+
+    public get WsBaseURL(): string {
+        return this.AppSettings.wsBaseUrl;
     }
 }

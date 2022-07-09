@@ -1,7 +1,7 @@
 export const environment = {
     title:   'Local Environment',
     production: false,
-    apiBaseURL: 'http://localhost:7156/api',
-    wsBaseUrl:  'wss://localhost:7156/ws',
+    apiBaseURL: 'https://192.168.0.150:7156',
+    wsBaseUrl:  'wss://192.168.0.150:7156',
     idpBaseURL: 'https://localhost:7288'
 };

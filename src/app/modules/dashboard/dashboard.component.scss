@@ -14,7 +14,7 @@
         grid-template-rows: 1fr 286px 1fr;
         column-gap: 22px;
         row-gap: 22px;
-        margin-top: 22px;
+        padding-top: 22px;
 
 
         .dashboard-col-1{
@@ -46,6 +46,20 @@
 
             mat-card{
                 height: 100%;
+                padding: 0;
+
+                mat-card-content{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    width: 100%;
+                    height: 100%;
+                    
+                    ag-grid-angular{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
             }
         }
 
