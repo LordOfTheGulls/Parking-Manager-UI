@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package export;
+
+service Export {
+	rpc ExportReport(ExportReportRequest) returns (stream ExportReportResponse);
+}
+
+message ExportReportRequest{
+	string ReportFromDate = 1;
+	string ReportToDate   = 2;
+	int32  ReportType 	  = 3;
+}
+
+message ExportReportResponse {
+	repeated ExportParkingEventLog ParkingEventLog = 1;
+}
+
+message ExportParkingEventLog {
+    int32 EventId = 1;
+}

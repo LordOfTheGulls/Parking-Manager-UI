@@ -5,5 +5,6 @@ $theme: (
     layout-background-color:  brown,
     header-background-color:  gray,
     sidebar-background-color: black,
+    button-background-color:  red
 );
 variables.$registered-themes: functions.register-theme(dark, $theme);

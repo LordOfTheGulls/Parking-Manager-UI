@@ -15,6 +15,14 @@ import { CoreModule } from './core/core.module';
 import { AuthCallbackComponent } from './auth-callback.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { ExportClient } from 'proto/gen/export.pbsc';
+import { ExportService } from './core/services/export.service';
+import { GrpcCoreModule } from '@ngx-grpc/core';
+import { GrpcWebClientModule } from '@ngx-grpc/grpc-web-client';
+
+
+import { environment } from 'src/environments/environment.dev';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -32,10 +40,18 @@ import { NgxSpinnerModule } from "ngx-spinner";
     AppLayoutModule,
     AppRoutingModule,
     StoreModule.forRoot([]),
+    GrpcCoreModule.forRoot(),
+    GrpcWebClientModule.forRoot({
+      settings: { host: 'https://192.168.0.150:7156' }
+    })
   ],
   exports: [
   ],
-  providers: [AuthGuard],
+  providers: [
+    AuthGuard,  
+    { provide: ExportClient},
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

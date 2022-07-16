@@ -1,1 +1,87 @@
-Reports
+<div class="reports-wrapper">
+
+    <mat-card>
+
+        <mat-card-header class="reports-filters-wrapper" [formGroup]="form">
+
+            <div class="reports-title-wrapper">
+                <mat-icon class="title-icon">assignment</mat-icon>
+                <h3>Reports</h3>
+            </div>
+
+            <form class="reports-form-wrapper" (ngSubmit)="search($event)" [formGroup]="form">
+
+                <mat-form-field appearance="outline" id="report-type-field">
+                    <mat-label>Report Type</mat-label>
+                    <mat-select multiple formControlName="reportType" disableOptionCentering >
+                        <mat-option *ngFor="let reportType of reportTypes" [value]="reportType.id">
+                            {{reportType.value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+                <!-- <mat-form-field appearance="outline" id="search-filter-field">
+                    <mat-label>Search Filter</mat-label>
+                    <input matInput placeholder="Search..." formControlName="filter">
+                </mat-form-field> -->
+    
+                <mat-form-field appearance="outline" id="from-date-field">
+                    <mat-label>From Date</mat-label>
+                    <input matInput placeholder="DD/MM/YYYY" [matDatepicker]="fromDatepicker" formControlName="fromDate">
+                    <mat-datepicker-toggle matSuffix [for]="fromDatepicker"></mat-datepicker-toggle>
+                    <mat-datepicker #fromDatepicker></mat-datepicker>
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline" id="to-date-field">
+                    <mat-label>To Date</mat-label>
+                    <input matInput placeholder="DD/MM/YYYY" [matDatepicker]="toDatepicker" formControlName="toDate">
+                    <mat-datepicker-toggle matSuffix [for]="toDatepicker"></mat-datepicker-toggle>
+                    <mat-datepicker #toDatepicker></mat-datepicker>
+                </mat-form-field>
+            
+                <button mat-raised-button color="primary" id="search-btn" type="submit" (click)="search($event)">
+                    Show<mat-icon matSuffix class="search-icon">search</mat-icon>
+                </button>
+    
+                <button mat-raised-button color="accent" id="export-btn" type="button" (click)="exportReport($event)" [disabled]="!(totalReports > 0)">
+                    Export All<mat-icon matSuffix class="export-icon">save_alt</mat-icon>
+                </button>
+
+            </form>
+           
+            
+        </mat-card-header>
+        
+        <mat-card-content>
+
+            <app-spinner [showSpinner]="loading"></app-spinner>
+
+            <ag-grid-angular 
+                id="reports-grid"
+                class="ag-theme-balham"
+                [modules]="modules"
+                [gridOptions]="reportsGridOptions" 
+                [rowData]="reportsData"
+                [overlayNoRowsTemplate]="'No Reports. Try changing the period.'">
+            </ag-grid-angular>
+
+        </mat-card-content>
+        
+        <mat-card-footer>
+            
+            <mat-paginator 
+                [length]="totalReports"
+                [pageIndex]="reportsPaging.page"
+                [pageSize]="reportsPaging.pageSize"
+                [pageSizeOptions]="[10, 20, 30, 100]"
+                (page)="reportsPagingChanges($event)">
+            </mat-paginator>
+
+        </mat-card-footer>
+
+    </mat-card>
+    
+</div>
+
+
+

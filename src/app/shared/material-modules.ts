@@ -6,6 +6,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -72,6 +74,7 @@ const MaterialModules =  [
     MatBadgeModule,
     MatCardModule,
     MatDatepickerModule,
+    MatMomentDateModule,
     MatTooltipModule,
     MatChipsModule,
     MatCheckboxModule,

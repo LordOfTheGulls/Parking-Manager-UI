@@ -148,17 +148,16 @@
                         type="line-scale" 
                         bdColor="rgb(75 106 130 / 43%)"
                         size="large"
-                        color="#5b9ef1"
-                        >
+                        color="#5b9ef1">
                     </ngx-spinner>
 
                     <ag-grid-angular 
                         id="event-grid"
                         class="ag-theme-balham"
-                        [gridOptions]="gridOptions" 
+                        [gridOptions]="eventGridOptions" 
                         [rowData]="eventData"
-                        [overlayNoRowsTemplate]="'No Available Events'"
-                    ></ag-grid-angular>
+                        [overlayNoRowsTemplate]="'No Available Events'">
+                    </ag-grid-angular>
 
                     <mat-paginator 
                         [length]="totalEvents"
@@ -226,12 +225,34 @@
 
             <mat-card>
         
-                <mat-card-title>
-                    Chart 5
-                </mat-card-title>
+                <mat-card-title></mat-card-title>
                 
                 <mat-card-content>
-        
+
+                    <ngx-spinner 
+                        [fullScreen]="false" 
+                        type="line-scale" 
+                        bdColor="rgb(75 106 130 / 43%)"
+                        size="large"
+                        color="#5b9ef1">
+                    </ngx-spinner>
+
+                    <ag-grid-angular 
+                        id="event-grid"
+                        class="ag-theme-balham"
+                        [gridOptions]="trafficGridOptions" 
+                        [rowData]="trafficData"
+                        [overlayNoRowsTemplate]="'No Available Traffic'">
+                    </ag-grid-angular>
+
+                    <mat-paginator 
+                        [length]="totalTraffic"
+                        [pageIndex]="trafficPaging.page"
+                        [pageSize]="trafficPaging.pageSize"
+                        [pageSizeOptions]="[10, 20, 30, 100]"
+                        (page)="trafficPagingChanges($event)">
+                    </mat-paginator>
+
                 </mat-card-content>
         
             </mat-card>
