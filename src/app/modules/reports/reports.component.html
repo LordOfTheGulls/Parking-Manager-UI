@@ -6,14 +6,14 @@
 
             <div class="reports-title-wrapper">
                 <mat-icon class="title-icon">assignment</mat-icon>
-                <h3>Reports</h3>
+                <h3>System Reports</h3>
             </div>
 
             <form class="reports-form-wrapper" (ngSubmit)="search($event)" [formGroup]="form">
 
                 <mat-form-field appearance="outline" id="report-type-field">
                     <mat-label>Report Type</mat-label>
-                    <mat-select multiple formControlName="reportType" disableOptionCentering >
+                    <mat-select formControlName="reportType" disableOptionCentering >
                         <mat-option *ngFor="let reportType of reportTypes" [value]="reportType.id">
                             {{reportType.value}}
                         </mat-option>
@@ -40,11 +40,12 @@
                 </mat-form-field>
             
                 <button mat-raised-button color="primary" id="search-btn" type="submit" (click)="search($event)">
-                    Show<mat-icon matSuffix class="search-icon">search</mat-icon>
+                    Show Results <mat-icon matSuffix class="search-icon">search</mat-icon>
                 </button>
     
-                <button mat-raised-button color="accent" id="export-btn" type="button" (click)="exportReport($event)" [disabled]="!(totalReports > 0)">
-                    Export All<mat-icon matSuffix class="export-icon">save_alt</mat-icon>
+                <button mat-raised-button color="accent" id="export-btn" type="button" (click)="exportAllReports($event)" [disabled]="!(totalReports > 0) || exporting || loading">
+                    Export All Results <mat-icon matSuffix class="export-icon">save_alt</mat-icon>
+                    <app-spinner [showSpinner]="exporting" [options]="{ type: 'ball-spin', color: 'green', size: 'small' }"></app-spinner>
                 </button>
 
             </form>
@@ -62,7 +63,7 @@
                 [modules]="modules"
                 [gridOptions]="reportsGridOptions" 
                 [rowData]="reportsData"
-                [overlayNoRowsTemplate]="'No Reports. Try changing the period.'">
+                [overlayNoRowsTemplate]="'No Reports! Try changing the period.'">
             </ag-grid-angular>
 
         </mat-card-content>

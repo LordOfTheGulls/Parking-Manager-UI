@@ -9,6 +9,7 @@ import { StatCardComponent } from "./components/stat-card/stat-card.component";
 import { AgGridModule } from "ag-grid-angular";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
         DashboardRoutingModule,
         SharedModule,
         AgGridModule,
-
+        NgChartsModule
     ],
     exports: [
 
@@ -27,5 +28,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     schemas:[CUSTOM_ELEMENTS_SCHEMA] 
 })
 export class DashboardModule {
-
+    constructor(){
+    }
 }

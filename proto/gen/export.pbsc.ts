@@ -35,24 +35,45 @@ export class ExportClient {
    */
   $raw = {
     /**
-     * Server streaming: /export.Export/ExportReport
+     * Server streaming: /export.Export/ExportReportByDate
      *
      * @param requestMessage Request message
      * @param requestMetadata Request metadata
-     * @returns Observable<GrpcEvent<thisProto.ExportReportResponse>>
+     * @returns Observable<GrpcEvent<thisProto.ExportReportByDateResponse>>
      */
-    exportReport: (
-      requestData: thisProto.ExportReportRequest,
+    exportReportByDate: (
+      requestData: thisProto.ExportReportByDateRequest,
       requestMetadata = new GrpcMetadata()
-    ): Observable<GrpcEvent<thisProto.ExportReportResponse>> => {
+    ): Observable<GrpcEvent<thisProto.ExportReportByDateResponse>> => {
       return this.handler.handle({
         type: GrpcCallType.serverStream,
         client: this.client,
-        path: '/export.Export/ExportReport',
+        path: '/export.Export/ExportReportByDate',
         requestData,
         requestMetadata,
-        requestClass: thisProto.ExportReportRequest,
-        responseClass: thisProto.ExportReportResponse
+        requestClass: thisProto.ExportReportByDateRequest,
+        responseClass: thisProto.ExportReportByDateResponse
+      });
+    },
+    /**
+     * Server streaming: /export.Export/ExportReportByPeriod
+     *
+     * @param requestMessage Request message
+     * @param requestMetadata Request metadata
+     * @returns Observable<GrpcEvent<thisProto.ExportReportByPeriodResponse>>
+     */
+    exportReportByPeriod: (
+      requestData: thisProto.ExportReportByPeriodRequest,
+      requestMetadata = new GrpcMetadata()
+    ): Observable<GrpcEvent<thisProto.ExportReportByPeriodResponse>> => {
+      return this.handler.handle({
+        type: GrpcCallType.serverStream,
+        client: this.client,
+        path: '/export.Export/ExportReportByPeriod',
+        requestData,
+        requestMetadata,
+        requestClass: thisProto.ExportReportByPeriodRequest,
+        responseClass: thisProto.ExportReportByPeriodResponse
       });
     }
   };
@@ -66,18 +87,34 @@ export class ExportClient {
   }
 
   /**
-   * Server streaming @/export.Export/ExportReport
+   * Server streaming @/export.Export/ExportReportByDate
    *
    * @param requestMessage Request message
    * @param requestMetadata Request metadata
-   * @returns Observable<thisProto.ExportReportResponse>
+   * @returns Observable<thisProto.ExportReportByDateResponse>
    */
-  exportReport(
-    requestData: thisProto.ExportReportRequest,
+  exportReportByDate(
+    requestData: thisProto.ExportReportByDateRequest,
     requestMetadata = new GrpcMetadata()
-  ): Observable<thisProto.ExportReportResponse> {
+  ): Observable<thisProto.ExportReportByDateResponse> {
     return this.$raw
-      .exportReport(requestData, requestMetadata)
+      .exportReportByDate(requestData, requestMetadata)
+      .pipe(throwStatusErrors(), takeMessages());
+  }
+
+  /**
+   * Server streaming @/export.Export/ExportReportByPeriod
+   *
+   * @param requestMessage Request message
+   * @param requestMetadata Request metadata
+   * @returns Observable<thisProto.ExportReportByPeriodResponse>
+   */
+  exportReportByPeriod(
+    requestData: thisProto.ExportReportByPeriodRequest,
+    requestMetadata = new GrpcMetadata()
+  ): Observable<thisProto.ExportReportByPeriodResponse> {
+    return this.$raw
+      .exportReportByPeriod(requestData, requestMetadata)
       .pipe(throwStatusErrors(), takeMessages());
   }
 }

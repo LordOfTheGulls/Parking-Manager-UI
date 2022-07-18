@@ -1,4 +1,6 @@
 export interface TrafficDTO {
-    trafficId: number;
-    
+    trafficLogId: number;
+    inDate: string;
+    outDate?: string;
+    licensePlate: string;
 }

@@ -8,6 +8,7 @@ import { Sorting } from "../../../core/models/sorting/sorting";
 import { TrafficDTO } from "../../../core/models/traffic";
 import { AppConfigService } from "../../../core/services/app-config.service";
 import { ParkingService } from "../../../core/services/parking.service";
+import { WeeklyChartDto, ParkingTrafficInForWeekFilterDto } from "../core/models/chart";
 
 
 @Injectable({ providedIn: 'root' })
@@ -23,7 +24,35 @@ export class DashboardService {
         return this.httpClient.post<PagingResult<EventDTO>>(`${this.appConfigService.ApiBaseURL}/parkingevent/all/${lotId}`, filter);
     }
 
+    public getParkingEventsForWeekData(lotId: number, date: string): Observable<WeeklyChartDto<number>> {
+        return this.httpClient.post<WeeklyChartDto<number>>(`${this.appConfigService.ApiBaseURL}/parkingevent/week/${lotId}`, { fromDate: date });
+    }
+
     public getParkingTrafficData(lotId: number, filter: FilterDto): Observable<PagingResult<TrafficDTO>> {
-        return this.httpClient.post<PagingResult<TrafficDTO>>(`${this.appConfigService.ApiBaseURL}/trafficdata/${lotId}`, filter);
+        return this.httpClient.post<PagingResult<TrafficDTO>>(`${this.appConfigService.ApiBaseURL}/parkingtraffic/all/${lotId}`, filter);
+    }
+
+    public getAverageStayTimeForPeriod(lotId: number, fromDate: string, toDate: string): Observable<number> {
+        return this.httpClient.post<number>(`${this.appConfigService.ApiBaseURL}/parkingtraffic/stay/average/period/${lotId}`, { fromDate, toDate });
+    }
+
+    public getParkingTrafficInForPeriod(lotId: number, fromDate: string, toDate: string): Observable<number> {
+        return this.httpClient.post<number>(`${this.appConfigService.ApiBaseURL}/parkingtraffic/in/period/${lotId}`, { fromDate, toDate });
+    }
+
+    public getParkingTrafficInForWeekData(lotId: number, filter: ParkingTrafficInForWeekFilterDto): Observable<WeeklyChartDto<number>> {
+        return this.httpClient.post<WeeklyChartDto<number>>(`${this.appConfigService.ApiBaseURL}/parkingtraffic/in/week/${lotId}`, filter);
+    }
+    
+    public getTotalProfitForPeriod(lotId: number, fromDate: string, toDate: string): Observable<number> {
+        return this.httpClient.post<number>(`${this.appConfigService.ApiBaseURL}/parkingpayment/profit/period/${lotId}`, { fromDate, toDate });
+    }
+
+    public getTotalProfitForWeek(lotId: number, date: string): Observable<WeeklyChartDto<number>> {
+        return this.httpClient.post<WeeklyChartDto<number>>(`${this.appConfigService.ApiBaseURL}/parkingpayment/profit/week/${lotId}`, { fromDate: date });
+    }
+
+    public getUserActivityForWeekData(lotId: number, date: string): Observable<WeeklyChartDto<number>> {
+        return this.httpClient.post<WeeklyChartDto<number>>(`${this.appConfigService.ApiBaseURL}/user/activity/week/${lotId}`, { fromDate: date });
     }
 }

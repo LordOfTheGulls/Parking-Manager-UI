@@ -3,5 +3,5 @@ import { Sorting } from "../sorting/sorting";
 
 export interface FilterDto {
     paging: Paging;
-    sorting?: Sorting[];
+    sorting?: Sorting[] | null;
 }

@@ -24,7 +24,7 @@
 
                     <ng-template #occupancyMode1Content>
 
-                        <span>{{dashboard.occupancy.free}} / {{dashboard.occupancy.total}}</span>
+                        <span>{{totalFreeSlots}} / {{totalSlots}}</span>
 
                     </ng-template>
 
@@ -59,8 +59,10 @@
                 </ng-container>
 
                 <ng-container stat="body">
+                    
+                    <app-spinner [showSpinner]="loadingTotalIn"></app-spinner>
 
-                    <span>22</span>
+                    <span>{{totalIn}}</span>
             
                 </ng-container>
 
@@ -91,7 +93,9 @@
 
                 <ng-container stat="body">
 
-                    <span>22 Hours</span>
+                    <app-spinner [showSpinner]="loadingStayTime"></app-spinner>
+
+                    <span>{{stayTime}}</span>
             
                 </ng-container>
 
@@ -106,7 +110,7 @@
 
                 <ng-container stat="header">
 
-                    Profit (in $)
+                    Profit (in lv.)
 
                 </ng-container>
 
@@ -118,7 +122,9 @@
 
                 <ng-container stat="body">
 
-                    <span>123.53</span>
+                    <app-spinner [showSpinner]="loadingTotalProfit"></app-spinner>
+
+                    <span>{{totalProfit}}</span>
             
                 </ng-container>
 
@@ -142,21 +148,15 @@
                 </mat-card-title>
                 
                 <mat-card-content>
-                    
-                    <ngx-spinner 
-                        [fullScreen]="false" 
-                        type="line-scale" 
-                        bdColor="rgb(75 106 130 / 43%)"
-                        size="large"
-                        color="#5b9ef1">
-                    </ngx-spinner>
+
+                    <app-spinner [showSpinner]="loadingEventsData" ></app-spinner>
 
                     <ag-grid-angular 
                         id="event-grid"
                         class="ag-theme-balham"
                         [gridOptions]="eventGridOptions" 
                         [rowData]="eventData"
-                        [overlayNoRowsTemplate]="'No Available Events'">
+                        [overlayNoRowsTemplate]="'No Available Event Data.'">
                     </ag-grid-angular>
 
                     <mat-paginator 
@@ -177,12 +177,20 @@
 
             <mat-card>
         
-                <mat-card-title>
-                    Chart 2 
-                </mat-card-title>
+                <mat-card-title></mat-card-title>
                 
                 <mat-card-content>
-        
+
+                    <app-spinner [showSpinner]="loadingPeakTrafficChartData"></app-spinner>
+
+                    <canvas baseChart
+                        type="bar"
+                        [datasets]="peakTrafficBarChartData"
+                        [labels]="peakTrafficBarChartLabels"
+                        [options]="peakTrafficBarChartOptions"
+                        [legend]="peakTrafficBarChartLegened">
+                    </canvas>
+                    
                 </mat-card-content>
         
             </mat-card>
@@ -193,12 +201,20 @@
 
             <mat-card>
         
-                <mat-card-title>
-                    Chart 3
-                </mat-card-title>
+                <mat-card-title></mat-card-title>
                 
                 <mat-card-content>
-        
+
+                    <app-spinner [showSpinner]="loadingProfitMadeChartData"></app-spinner>
+
+                    <canvas baseChart
+                        type="bar"
+                        [datasets]="profitMadeBarChartData"
+                        [labels]="profitMadeBarChartLabels"
+                        [options]="profitMadeBarChartOptions"
+                        [legend]="profitMadeBarChartLegend">
+                    </canvas>
+
                 </mat-card-content>
         
             </mat-card>
@@ -209,12 +225,19 @@
 
             <mat-card>
         
-                <mat-card-title>
-                    Chart 4
-                </mat-card-title>
+                <mat-card-title></mat-card-title>
                 
                 <mat-card-content>
-        
+                               
+                    <app-spinner [showSpinner]="loadingActivityChartData"></app-spinner>
+
+                    <canvas baseChart
+                        type="line" width="400" height="150"
+                        [datasets]="parkingActivityLineChartData"
+                        [labels]="parkingActivityLineChartLabels"
+                        [options]="parkingActivityLineChartOptions"
+                        [legend]="parkingActivityLineChartLegend">
+                    </canvas>
                 </mat-card-content>
         
             </mat-card>
@@ -242,7 +265,7 @@
                         class="ag-theme-balham"
                         [gridOptions]="trafficGridOptions" 
                         [rowData]="trafficData"
-                        [overlayNoRowsTemplate]="'No Available Traffic'">
+                        [overlayNoRowsTemplate]="'No Available Traffic Data.'">
                     </ag-grid-angular>
 
                     <mat-paginator 
