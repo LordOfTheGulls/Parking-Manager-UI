@@ -4,14 +4,20 @@ import { SharedModule } from "src/app/shared/shared.module";
 import { ParkingRoutingModule } from "./parking-routing.module";
 
 import { ParkingComponent } from "./parking.component";
+import { GoogleMapsModule } from '@angular/google-maps';
+import { AgGridModule } from "ag-grid-angular";
+import { RateLengthEditorComponent } from "./components/rate-length-cell.component";
 
 @NgModule({
     declarations: [
-        ParkingComponent
+        ParkingComponent,
+        RateLengthEditorComponent,
     ],
     imports: [
+        AgGridModule,
+        GoogleMapsModule,
         ParkingRoutingModule,
-        SharedModule
+        SharedModule,
     ],
     exports: [
 

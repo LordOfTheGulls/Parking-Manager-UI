@@ -1,0 +1,107 @@
+.parking-wrapper{
+    width: 100%;
+    height: 100%;
+    margin-top: 16px;
+
+  
+
+    .parking-options-wrapper{
+        display: flex;
+        flex-direction: column;
+
+        .row-1{
+            display: flex;
+
+            mat-card{
+                width: 100%;
+                height: 100%;
+    
+                &.parking-location-wrapper{
+                    flex: 1;
+
+                    .parking-location-btn-wrapper{
+                        display: flex;
+
+                        #go-to-location-btn{
+                            margin-right: 16px;
+                        }
+                    }
+
+                    mat-card-title{
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                    
+                    ::ng-deep google-map{
+                        .parkinglabel{
+                            color: white  !important;
+                            border-radius: 6px;
+                            padding: 6px;
+                            font-size: 22pt;
+                            font-weight: '700';
+                            background-color: #5B9EF1;
+                        }
+                    }
+                }
+                
+                &.parking-payments-wrapper{
+                    flex: 0.8;
+                    height: 100%;
+                    margin-left: 16px;
+                }
+
+                &.parking-traffic-wrapper{
+                    flex: 1;
+                    height: 100%;
+                    margin-left: 16px;
+                }
+            }
+        }
+
+        .row-2{
+            display: flex;
+            margin-top: 16px;
+
+            mat-card{
+                width: 100%;
+                height: 100%;
+
+                &.parking-rate-wrapper{
+                    min-width: 600px;
+                    
+                    mat-card-subtitle{
+                        display: flex;
+                        margin-top: 22px;
+
+                        mat-form-field#pricing-day-field{
+                            margin-left: 16px;
+                        }
+
+                        button#update-pricing-btn{
+                            margin-left: auto;
+                            height: 40px;
+                        }
+                    }
+
+                    mat-card-content{
+
+                        ::ng-deep ag-grid-angular{
+                            height: 400px;
+
+                            .ag-cell-inline-editing{
+                                height: 100%;
+                                border-color: transparent !important;
+                            }
+                        }
+                        
+                    }
+                   
+                }
+
+                &.parking-workhours-wrapper{
+                    margin-left: 16px;
+                }
+            }
+        }
+    }
+}
