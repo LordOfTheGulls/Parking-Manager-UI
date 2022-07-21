@@ -6,6 +6,7 @@ import { SharedComponents } from './components';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedAgGridComponents } from './ag-grid';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 @NgModule({
     declarations: [
@@ -16,7 +17,8 @@ import { SharedAgGridComponents } from './ag-grid';
         NgxSpinnerModule,
         MaterialsModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        NgxMaterialTimepickerModule
     ],
     exports: [
         SharedComponents,
@@ -24,7 +26,8 @@ import { SharedAgGridComponents } from './ag-grid';
         MaterialsModule,
         FormsModule,
         ReactiveFormsModule,
-        NgxSpinnerModule
+        NgxSpinnerModule,
+        NgxMaterialTimepickerModule
     ]
 })
 export class SharedModule{}

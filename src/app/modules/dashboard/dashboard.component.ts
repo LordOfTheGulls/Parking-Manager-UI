@@ -247,7 +247,7 @@ export class DashboardComponent implements OnInit {
           flex: 0.5,
           field: 'row',
           sortable: false,
-          valueFormatter: (params) => ((params.node?.rowIndex ?? 0) + 1 + this.eventsPaging.page * this.eventsPaging.pageSize)
+          valueFormatter: (params) => ((params.node?.rowIndex ?? 0) + 1 + this.trafficPaging.page * this.trafficPaging.pageSize)
         },
         { 
           headerName: 'Traffic Log Id',

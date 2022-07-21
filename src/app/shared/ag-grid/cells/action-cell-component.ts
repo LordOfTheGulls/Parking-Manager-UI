@@ -7,7 +7,7 @@ import {ICellRendererParams} from "ag-grid-community";
     <div>
         <ng-container *ngIf="isRowInEditMode">
 
-            <button mat-raised-button color="primary" id="save-row-btn" (click)="saveRow()" >
+            <button mat-raised-button color="primary" id="save-row-btn" (click)="saveRow()" [disabled]="!canEdit">
                 <mat-icon>save_icon</mat-icon>
             </button>
             
@@ -23,7 +23,7 @@ import {ICellRendererParams} from "ag-grid-community";
                 <mat-icon>edit</mat-icon>
             </button>
 
-            <button *ngIf="deleteActionAllowed" mat-raised-button color="warn" id="delete-row-btn" (click)="deleteRow()">
+            <button *ngIf="deleteActionAllowed" mat-raised-button color="warn" id="delete-row-btn" (click)="deleteRow()" [disabled]="!canEdit">
                 <mat-icon>delete</mat-icon>
             </button>
 
@@ -64,8 +64,12 @@ export class ActionCellComponent implements ICellRendererAngularComp {
 
     public deleteActionAllowed: boolean = true;
 
+    public canEdit: boolean = true;
+
     agInit(params: any): void {
         this.params = params;
+
+        this.canEdit = params.canEdit ?? true;
 
         this.deleteActionAllowed = params.deleteActionAllowed ?? true;
 

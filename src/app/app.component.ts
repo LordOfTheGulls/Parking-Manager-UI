@@ -4,6 +4,7 @@ import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from '@angular/platform-browser';
 import { RouterOutlet } from '@angular/router';
 import { Observable } from 'rxjs';
+import { UserService } from './core/services/user.service';
 import { WebSocketService } from './core/services/websocket.service';
 
 @Component({
@@ -18,10 +19,16 @@ export class AppComponent implements OnInit {
     private iconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
     private websocketService: WebSocketService,
+    private userService: UserService,
   ){
     this.iconRegistry.addSvgIcon(
       'pm-logo', this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/svg/logo.svg")
     );
+
+    this.userService.getUser(1)
+    .subscribe(val => {
+      this.userService.loggedUser.next(val);
+    });
   }
 
   ngOnInit(){

@@ -1,7 +1,11 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, distinctUntilChanged, Observable, shareReplay } from "rxjs";
+import { ParkingLotInfoDto } from "../models/parking/parking";
+import { ParkingBlackListDto } from "../models/parking/parking-blacklist";
+import { ParkingLocationDto } from "../models/parking/parking-location";
 import { ParkingPricingDto, ParkingPricingIntervalsDto } from "../models/parking/parking-pricing";
+import { ParkingWorkhourDto } from "../models/parking/parking-workhours";
 import { AppConfigService } from "./app-config.service";
 
 
@@ -15,6 +19,14 @@ export class ParkingService {
         private appConfigService: AppConfigService,
     ){
 
+    }
+
+    public parkingLotInfo(lotId: number): Observable<ParkingLotInfoDto>{
+        return this.httpClient.get<ParkingLotInfoDto>(`${this.appConfigService.ApiBaseURL}/parking/${lotId}`);
+    }
+
+    public updateParkingLocation(lotId: number, location: ParkingLocationDto): Observable<any>{
+        return this.httpClient.post(`${this.appConfigService.ApiBaseURL}/parking/location/update/${lotId}`, location);
     }
 
     public get parkingStatus() {
@@ -39,5 +51,29 @@ export class ParkingService {
 
     public getParkingPricingIntervals(lotId: number, parkingPricingPlanId: number): Observable<ParkingPricingIntervalsDto>{
         return this.httpClient.get<ParkingPricingIntervalsDto>(`${this.appConfigService.ApiBaseURL}/parkingpricing/intervals/${lotId}/${parkingPricingPlanId}`);
+    }
+
+    public getParkingWorkhours(lotId: number, parkingWorkhoursPlanId: number): Observable<ParkingWorkhourDto[]>{
+        return this.httpClient.post<ParkingWorkhourDto[]>(`${this.appConfigService.ApiBaseURL}/parkingworkhours/all/${lotId}`, parkingWorkhoursPlanId);
+    }
+
+    public updateParkingWorkhours(lotId: number, parkingWorkhours: ParkingWorkhourDto): Observable<any>{
+        return this.httpClient.post<any>(`${this.appConfigService.ApiBaseURL}/parkingworkhours/update/${lotId}`, parkingWorkhours);
+    }
+
+    public addToBlacklist(lotId: Number): Observable<any>{
+        return this.httpClient.post(`${this.appConfigService.ApiBaseURL}/parkingblacklist/add/${lotId}`, null);
+    }
+
+    public updateParkingBlacklist(lotId: Number, parkingBlacklist: ParkingBlackListDto): Observable<ParkingBlackListDto[]>{
+        return this.httpClient.post<ParkingBlackListDto[]>(`${this.appConfigService.ApiBaseURL}/parkingblacklist/update/${lotId}`, parkingBlacklist);
+    }
+
+    public deleteParkingBlacklist(lotId: number, parkingBlacklistId: number): Observable<any>{
+        return this.httpClient.post(`${this.appConfigService.ApiBaseURL}/parkingblacklist/delete/${lotId}/${parkingBlacklistId}`, null);
+    }
+
+    public getParkingBlacklist(lotId: Number): Observable<ParkingBlackListDto[]>{
+        return this.httpClient.post<ParkingBlackListDto[]>(`${this.appConfigService.ApiBaseURL}/parkingblacklist/all/${lotId}`, null);
     }
 }

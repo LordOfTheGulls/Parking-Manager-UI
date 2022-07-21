@@ -1,132 +1,224 @@
 <div class="parking-wrapper">
 
-    <div class="parking-btn-row-wrapper">
+    <mat-tab-group>
 
-    </div>
+        <mat-tab label="Parking Options" id="parking-options-tab">
+          <ng-template matTabContent>
+            <div class="parking-options-wrapper">
 
-    <div class="parking-options-wrapper">
-
-        <div class="row-1">
-
-            <mat-card class="parking-location-wrapper">
-
-                <mat-card-title>
-                    Parking Location
-
-                    <div class="parking-location-btn-wrapper">
-                        <button mat-raised-button color="primary" id="go-to-location-btn" type="submit" (click)="goToParkingLocation()">
-                            Find Parking Location <mat-icon matSuffix class="gps-icon">gps_fixed</mat-icon>
-                        </button>
-                        <button mat-raised-button color="primary" id="update-location-btn" type="submit" (click)="updateParkingLocation()"
-                            [disabled]="!parkingLocationChanged">
-                            Update Location <mat-icon matSuffix class="location-icon">location_on</mat-icon>
-                        </button>
-                    </div>
-                   
-                </mat-card-title>
+                <div class="row-1">
         
-                <mat-card-content>
-
-                    <!-- <google-map [options]="mapOptions"  width="100%" height="380px">
-                        <map-marker [options]="parkingMarker" (mapDragend)="parkingLocationChanges($event)"></map-marker>
-                    </google-map> -->
-
-                </mat-card-content>
+                    <mat-card class="parking-location-wrapper">
         
-            </mat-card>
+                        <mat-card-title>
+                            Parking Location
         
-            <mat-card class="parking-payments-wrapper">
-        
-                <mat-card-title>Payments</mat-card-title>
-        
-                <mat-card-content>
-                    
-                </mat-card-content>
-        
-            </mat-card>
-
-            <mat-card class="parking-traffic-wrapper">
-        
-                <mat-card-title>Traffic</mat-card-title>
-        
-                <mat-card-content>
-                    
-                </mat-card-content>
-        
-            </mat-card>
-
-        </div>
-       
-
-        <div class="row-2">
-
-            <mat-card class="parking-rate-wrapper">
-    
-                <mat-card-title>Parking Pricing</mat-card-title>
+                            <div class="parking-location-btn-wrapper">
+                                <button mat-raised-button color="primary" id="go-to-location-btn" type="submit" (click)="goToParkingLocation()">
+                                    Find Parking Location <mat-icon matSuffix class="gps-icon">gps_fixed</mat-icon>
+                                </button>
+                                <button mat-raised-button color="primary" id="update-location-btn" type="submit" (click)="updateParkingLocation()"
+                                    [disabled]="!parkingLocationChanged">
+                                    Update Location <mat-icon matSuffix class="location-icon">location_on</mat-icon>
+                                </button>
+                            </div>
+                           
+                        </mat-card-title>
                 
-                <mat-card-subtitle [formGroup]="rateForm">
-                    
-                    <mat-form-field appearance="outline" id="pricing-model-field">
-                        <mat-label>Pricing Model</mat-label>
-                        <mat-select disableOptionCentering formControlName="pricingModel">
-                            <mat-option [value]="0">Per Time</mat-option>
-                            <mat-option [value]="1">Per Entry</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-
-                    <mat-form-field appearance="outline" id="pricing-day-field">
-                        <mat-label>Day of week</mat-label>
-                        <mat-select disableOptionCentering formControlName="dayOfWeek">
-                            <mat-option [value]="0">Monday</mat-option>
-                            <mat-option [value]="1">Tuesday</mat-option>
-                            <mat-option [value]="2">Wednesday</mat-option>
-                            <mat-option [value]="3">Thursday</mat-option>
-                            <mat-option [value]="4">Friday</mat-option>
-                            <mat-option [value]="5">Saturday</mat-option>
-                            <mat-option [value]="6">Sunday</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    
-                    <!-- 
-                    <button mat-raised-button color="primary" id="update-pricing-btn" (click)="updatePricing()">
-                        Update Pricing <mat-icon matSuffix class="save-icon">save-icon</mat-icon>
-                    </button> -->
-
-                </mat-card-subtitle>
-
-                <mat-card-content>
-
-                    <app-spinner [showSpinner]="loadingParkingPricing"></app-spinner>
-
-                    <ag-grid-angular 
-                        id="rate-grid"
-                        class="ag-theme-balham"
-                        [gridOptions]="rateGridOptions" 
-                        [rowData]="rateData"
-                        [overlayNoRowsTemplate]="'No Pricing has been set.'">
-                    </ag-grid-angular>
-
-                </mat-card-content>
+                        <mat-card-content>
         
-            </mat-card>
-
-            <mat-card class="parking-workhours-wrapper">
-    
-                <mat-card-title>Workhours</mat-card-title>
+                            <google-map [options]="mapOptions"  width="100%" height="380px">
+                                <map-marker [options]="parkingMarker" (mapDragend)="parkingLocationChanges($event)"></map-marker>
+                            </google-map>
         
-                <mat-card-content>
-                    
-                </mat-card-content>
+                        </mat-card-content>
+                
+                    </mat-card>
+                
+                    <mat-card class="parking-payments-wrapper">
+                
+                        <mat-card-title>Payments</mat-card-title>
+                
+                        <mat-card-content>
+                            
+                            <app-spinner [showSpinner]="loadingPaymentData"></app-spinner>
         
-            </mat-card>
+                            <ag-grid-angular 
+                                id="event-grid"
+                                class="ag-theme-balham"
+                                [gridOptions]="paymentGridOptions" 
+                                [rowData]="paymentData"
+                                [overlayNoRowsTemplate]="'No Payment Data available.'">
+                            </ag-grid-angular>
+        
+                        </mat-card-content>
 
-        </div>
+                        <mat-card-footer>
 
- 
+                            <mat-paginator 
+                                [length]="totalPayments"
+                                [pageIndex]="paymentPaging.page"
+                                [pageSize]="paymentPaging.pageSize"
+                                [pageSizeOptions]="[10, 20, 30, 100]"
+                                (page)="paymentPagingChanges($event)">
+                            </mat-paginator>
 
-    </div>
-   
+                        </mat-card-footer>
+                
+                    </mat-card>
+        
+                    <mat-card class="parking-traffic-wrapper">
+                
+                        <mat-card-title>Traffic</mat-card-title>
+                
+                        <mat-card-content>
+        
+                            <ngx-spinner 
+                                [fullScreen]="false" 
+                                type="line-scale" 
+                                bdColor="rgb(75 106 130 / 43%)"
+                                size="large"
+                                color="#5b9ef1">
+                            </ngx-spinner>
+        
+                            <ag-grid-angular 
+                                id="event-grid"
+                                class="ag-theme-balham"
+                                [gridOptions]="trafficGridOptions" 
+                                [rowData]="trafficData"
+                                [overlayNoRowsTemplate]="'No Available Traffic Data.'">
+                            </ag-grid-angular>
+        
+                            <mat-paginator 
+                                [length]="totalTraffic"
+                                [pageIndex]="trafficPaging.page"
+                                [pageSize]="trafficPaging.pageSize"
+                                [pageSizeOptions]="[10, 20, 30, 100]"
+                                (page)="trafficPagingChanges($event)">
+                            </mat-paginator>
+        
+                        </mat-card-content>
+                
+                    </mat-card>
+        
+                </div>
+               
+        
+                <div class="row-2">
+        
+                    <mat-card class="parking-rate-wrapper">
+            
+                        <mat-card-title>Parking Pricing</mat-card-title>
+                        
+                        <mat-card-subtitle [formGroup]="rateForm">
+                            
+                            <mat-form-field appearance="outline" id="pricing-model-field">
+                                <mat-label>Pricing Model</mat-label>
+                                <mat-select disableOptionCentering formControlName="pricingModel">
+                                    <mat-option [value]="0">Per Time</mat-option>
+                                    <mat-option [value]="1">Per Entry</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+        
+                            <mat-form-field appearance="outline" id="pricing-day-field">
+                                <mat-label>Day of week</mat-label>
+                                <mat-select disableOptionCentering formControlName="dayOfWeek">
+                                    <mat-option [value]="0">Monday</mat-option>
+                                    <mat-option [value]="1">Tuesday</mat-option>
+                                    <mat-option [value]="2">Wednesday</mat-option>
+                                    <mat-option [value]="3">Thursday</mat-option>
+                                    <mat-option [value]="4">Friday</mat-option>
+                                    <mat-option [value]="5">Saturday</mat-option>
+                                    <mat-option [value]="6">Sunday</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            
+                            <!-- 
+                            <button mat-raised-button color="primary" id="update-pricing-btn" (click)="updatePricing()">
+                                Update Pricing <mat-icon matSuffix class="save-icon">save-icon</mat-icon>
+                            </button> -->
+        
+                        </mat-card-subtitle>
+        
+                        <mat-card-content>
+        
+                            <app-spinner [showSpinner]="loadingParkingPricing"></app-spinner>
+        
+                            <ag-grid-angular 
+                                id="rate-grid"
+                                class="ag-theme-balham"
+                                [gridOptions]="rateGridOptions" 
+                                [rowData]="rateData"
+                                [overlayNoRowsTemplate]="'No Pricing has been set.'">
+                            </ag-grid-angular>
+        
+                        </mat-card-content>
+                
+                    </mat-card>
+        
+                    <mat-card class="parking-workhours-wrapper">
+            
+                        <mat-card-title>Parking Blacklist</mat-card-title>
+                
+                        <mat-card-content>
+        
+                            <app-spinner [showSpinner]="loadingBlackList"></app-spinner>
+        
+                            <ag-grid-angular 
+                                id="blacklist-grid"
+                                class="ag-theme-balham"
+                                [gridOptions]="blackListGridOptions" 
+                                [rowData]="blackListData"
+                                [overlayNoRowsTemplate]="'Blacklist is empty.'">
+                            </ag-grid-angular>
+                            
+                        </mat-card-content>
+                
+                    </mat-card>
+        
+        
+                    <mat-card class="parking-workhours-wrapper">
+            
+                        <mat-card-title>Workhours</mat-card-title>
+                
+                        <mat-card-content>
+        
+                            <app-spinner [showSpinner]="loadingParkingWorkhours"></app-spinner>
+        
+                            <ag-grid-angular 
+                                id="workhours-grid"
+                                class="ag-theme-balham"
+                                [gridOptions]="workHoursGridOptions" 
+                                [rowData]="workHoursData"
+                                [overlayNoRowsTemplate]="'No Workhours have been set.'">
+                            </ag-grid-angular>
+                            
+                        </mat-card-content>
+                
+                    </mat-card>
+        
+                </div>
+        
+         
+        
+            </div>
+        
+            </ng-template>
+        </mat-tab>
 
+        <mat-tab label="Live View" >
 
+          <ng-template matTabContent>
+            <div class="parking-space-wrapper">
+
+                <app-parking-space *ngFor="let parkingSpace of parkingSpaces" [isTaken]="parkingSpace.isTaken" [slotId]="parkingSpace.spotId"></app-parking-space>
+
+            </div>
+
+          </ng-template>
+
+        </mat-tab>
+
+    </mat-tab-group>
 
 </div>

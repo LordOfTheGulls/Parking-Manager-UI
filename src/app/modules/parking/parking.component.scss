@@ -1,9 +1,9 @@
+
+
 .parking-wrapper{
     width: 100%;
     height: 100%;
     margin-top: 16px;
-
-  
 
     .parking-options-wrapper{
         display: flex;
@@ -48,12 +48,36 @@
                     flex: 0.8;
                     height: 100%;
                     margin-left: 16px;
+
+                    mat-card-content{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        width: 100%;
+                        
+                        ag-grid-angular{
+                            width: 100%;
+                            height: 334px;
+                        }
+                    }
                 }
 
                 &.parking-traffic-wrapper{
                     flex: 1;
                     height: 100%;
                     margin-left: 16px;
+
+                    mat-card-content{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        width: 100%;
+                        
+                        ag-grid-angular{
+                            width: 100%;
+                            height: 334px;
+                        }
+                    }
                 }
             }
         }
@@ -86,7 +110,7 @@
                     mat-card-content{
 
                         ::ng-deep ag-grid-angular{
-                            height: 400px;
+                            height: 310px;
 
                             .ag-cell-inline-editing{
                                 height: 100%;
@@ -100,8 +124,36 @@
 
                 &.parking-workhours-wrapper{
                     margin-left: 16px;
+
+                    mat-card-content{
+
+                        ::ng-deep ag-grid-angular{
+                            height: 400px;
+
+                            .ag-cell-inline-editing{
+                                height: 100%;
+                                border-color: transparent !important;
+                            }
+                        }
+                    }
                 }
             }
         }
     }
+
+    .parking-space-wrapper{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        margin-left: -22px;
+        margin-top: 16px;
+
+        app-parking-space{
+            margin-left: 22px;
+            margin-bottom: 22px;
+        }
+    }
+   
 }

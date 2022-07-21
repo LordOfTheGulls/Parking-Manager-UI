@@ -1,5 +1,5 @@
 export interface ParkingLocationDto {
     parkingLotId: number;
-    latitude:  number;
+    lattitude:  number;
     longitude: number;
 }

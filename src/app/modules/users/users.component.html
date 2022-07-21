@@ -1,1 +1,36 @@
-Users
+<div class="users-wrapper">
+
+    <mat-card>
+
+        <mat-card-title>
+            Users
+        </mat-card-title>
+
+        <mat-card-content>
+
+            <app-spinner [showSpinner]="loadingUsers"></app-spinner>
+
+            <ag-grid-angular 
+                id="users-grid"
+                class="ag-theme-balham"
+                [modules]="modules"
+                [gridOptions]="gridOptions" 
+                [rowData]="usersData"
+                [overlayNoRowsTemplate]="'No Users available'">
+            </ag-grid-angular>
+
+        </mat-card-content>
+        
+        <mat-card-footer>
+            
+            <mat-paginator 
+                [length]="totalUsers"
+                [pageIndex]="usersPaging.page"
+                [pageSize]="usersPaging.pageSize"
+                [pageSizeOptions]="[10, 20, 30, 100]"
+                (page)="usersPagingChange($event)">
+            </mat-paginator>
+
+        </mat-card-footer>
+    </mat-card>
+</div>

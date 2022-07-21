@@ -65,7 +65,6 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { ChartModule } from 'primeng/chart';
-
 const MaterialModules =  [
     /*Angular Material*/
     MatRadioModule,
